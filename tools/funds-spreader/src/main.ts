@@ -11,18 +11,20 @@ const FUNDS_SPREADERS_PARAMETERS = SHIMMER_CLAIMING_FUNDS_SPREADERS_PARAMETERS
 async function runFundsSpreader(): Promise<void> {
     try {
         cleanupOldAccountManagerData()
-
-        let round = 1
-        for (const fundsSpreaderParameters of FUNDS_SPREADERS_PARAMETERS) {
-            await spreadFunds(fundsSpreaderParameters, round)
-            await sleep(FUNDS_SPREADER_SLEEP_INTERVAL)
-            round++
-        }
-
+        await runFundsSpreaderInternal()
         process.exit(0)
     } catch (error) {
         console.error(error)
         process.exit(1)
+    }
+}
+
+async function runFundsSpreaderInternal(): Promise<void> {
+    let round = 1
+    for (const fundsSpreaderParameters of FUNDS_SPREADERS_PARAMETERS) {
+        await spreadFunds(fundsSpreaderParameters, round)
+        await sleep(FUNDS_SPREADER_SLEEP_INTERVAL)
+        round++
     }
 }
 

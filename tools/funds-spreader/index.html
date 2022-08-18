@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/stardust-tools">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.714116300562">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.714116812068">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -32,12 +32,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/stardust-tools/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/wizard-wand.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.714116300562" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.714116812068" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.714116300562" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.714116812068" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.714116300562" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.714116300562" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.714116812068" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.714116812068" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -293,7 +293,7 @@
 </doc-anchor-target>
 <p>Before using the funds spreader, you <strong>MUST</strong> configure your <code v-pre>.env</code> file:</p>
 <ol>
-<li>Copy the <code v-pre>.env.example</code> file located in <a href="https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/.env.example"><code v-pre>stardust-tools/tools/funds-spreader/.env.example</code></a> and rename to <code v-pre>.env</code></li>
+<li>Copy the <code v-pre>.env.example</code> file located in <a href="https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/.env.example" target="\_blank"><code v-pre>stardust-tools/tools/funds-spreader/.env.example</code></a> and rename to <code v-pre>.env</code></li>
 <li>Fill in each line where there is a blank string with a mnemonic (ideally different ones but could also be the same)</li>
 </ol>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -377,7 +377,7 @@ whisper bench borrow aware luxury cool ecology orchard certain urban force cradl
     </h4>
 </doc-anchor-target>
 <p>By default, the tool is setup to use the specific parameters for Shimmer claiming (reason being that this tool was originally created for testing this functionality in Firefly).</p>
-<p>Those parameters are located in <a href="https://github.com/maxwellmattryan/stardust-tools/tree/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters"><code v-pre>stardust-tools/tools/funds-spreader/src/constants/funds-spreaders-parameters</code></a>.</p>
+<p>Those parameters are located in <a href="https://github.com/maxwellmattryan/stardust-tools/tree/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters" target="\_blank"><code v-pre>stardust-tools/tools/funds-spreader/src/constants/funds-spreaders-parameters</code></a>.</p>
 <div class="flex mb-6">
     <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
     <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
@@ -392,7 +392,7 @@ whisper bench borrow aware luxury cool ecology orchard certain urban force cradl
         </div>
         <div class="pr-5 ml-3 w-full">
             <h5>INFO</h5>
-<p>If you wish to change the <code v-pre>coin_type</code> parameter that the addresses are <em>derived</em> (<strong>NOT</strong> <em>encoded</em> as Stardust hasn&#x27;t yet reached IOTA) with, then please edit <a href="https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters/shimmer-claiming-funds-spreaders-parameters.ts#L173">this line</a>.</p>
+<p>If you wish to change the <code v-pre>coin_type</code> parameter that the addresses are <em>derived</em> (<strong>NOT</strong> <em>encoded</em> as Stardust hasn&#x27;t yet reached IOTA) with, then please edit <a href="https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters/shimmer-claiming-funds-spreaders-parameters.ts#L173" target="\_blank">this line</a>.</p>
         </div>
     </div>
 </div>
@@ -407,8 +407,8 @@ whisper bench borrow aware luxury cool ecology orchard certain urban force cradl
 <ol>
 <li>Create a new TypeScript file in <code v-pre>stardust-tools/tools/funds-spreader/src/constants/funds-spreaders-parameters</code></li>
 <li>Properly declare and define a variable of type <code v-pre>IFundsSpreaderParameters[]</code> with the specific configuration</li>
-<li>Barrel export your newly created file by adding another line in <a href="https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters/index.ts"><code v-pre>stardust-tools/tools/funds-spreader/src/constants/funds-spreaders-parameters/index.ts</code></a></li>
-<li>In <code v-pre>stardust-tools/tools/funds-spreader/src/main.ts</code>, please change <a href="https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/main.ts#L9">this line</a></li>
+<li>Barrel export your newly created file by adding another line in <a href="https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters/index.ts" target="\_blank"><code v-pre>stardust-tools/tools/funds-spreader/src/constants/funds-spreaders-parameters/index.ts</code></a></li>
+<li>In <code v-pre>stardust-tools/tools/funds-spreader/src/main.ts</code>, please change <a href="https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/main.ts#L9" target="\_blank">this line</a></li>
 </ol>
 <p>Due to the way the funds spreader works (requesting funds from a faucet rather than making transfers of your own funds), it will <strong>NOT</strong> work for any mainnet funds (IOTA <em>or</em> SMR).
 Although this is a potential feature to add in the future, e.g. a <code v-pre>FundsSpreaderStrategy</code> that indicates how exactly to &quot;spread funds&quot; amongst addresses.</p>

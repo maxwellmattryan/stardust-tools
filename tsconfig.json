@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "lib": ["es6"],
+        "moduleResolution": "node",
+        "types": ["node"]
+    },
+    "include": [
+        "tools/funds-spreader"
+    ],
+    "exclude": ["**/node_modules", "**/tests"]
+}

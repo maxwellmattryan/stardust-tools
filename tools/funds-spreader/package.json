@@ -1,0 +1,19 @@
+{
+    "name": "funds-spreader",
+    "version": "1.0.0",
+    "description": "A tool to spread funds amongst a specified IOTA/SMR address space",
+    "author": "Matthew Maxwell <maxwellmattryan@gmail.com>",
+    "repository": "git@github.com:maxwellmattryan/stardust-tools.git",
+    "license": "MIT",
+    "scripts": {
+        "execute": "ts-node src/main.ts"
+    },
+    "dependencies": {
+        "axios": "^0.27.2",
+        "bluebird": "^3.7.2",
+        "dotenv": "^16.0.1"
+    },
+    "devDependencies": {
+        "@types/bluebird": "^3.5.36"
+    }
+}

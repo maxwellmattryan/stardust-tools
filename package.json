@@ -1,0 +1,30 @@
+{
+    "name": "stardust-tools",
+    "version": "1.0.0",
+    "description": "A suite of tools useful in development of software for the IOTA and Shimmer networks",
+    "author": "Matthew Maxwell <maxwellmattryan@gmail.com>",
+    "repository": "git@github.com:maxwellmattryan/stardust-tools.git",
+    "license": "MIT",
+    "private": true,
+    "workspaces": [
+        "tools/funds-spreader"
+    ],
+    "scripts": {
+        "tool:funds-spreader": "cd tools/funds-spreader && yarn execute"
+    },
+    "dependencies": {
+        "@iota/wallet": "2.0.2-alpha.11"
+    },
+    "devDependencies": {
+        "@types/node": "^18.7.6",
+        "@typescript-eslint/parser": "^5.33.1",
+        "eslint": "^8.22.0",
+        "husky": "^8.0.1",
+        "lint-staged": "^13.0.3",
+        "prettier": "^2.7.1"
+    },
+    "lint-staged": {
+        "*.{ts,js": "eslint --cache --fix",
+        "*.{ts,js,json}": "prettier --write"
+    }
+}

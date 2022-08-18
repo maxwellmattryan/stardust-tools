@@ -1,10 +1,33 @@
 {
     "root": true,
     "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
+    "plugins": ["@typescript-eslint/eslint-plugin"],
     "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
-    ]
+        "eslint:recommended"
+    ],
+    "overrides": [
+        {
+            "files": ["**/*.ts"],
+            "extends": [
+                "plugin:@typescript-eslint/eslint-recommended",
+                "plugin:@typescript-eslint/recommended",
+                "plugin:@typescript-eslint/recommended-requiring-type-checking"
+            ],
+            "parser": "@typescript-eslint/parser",
+            "parserOptions": {
+                "ecmaVersion": 6,
+                "sourceType": "module",
+                "project": "./tsconfig.lint.json"
+            },
+            "plugins": ["@typescript-eslint"],
+            "rules": {
+                "no-unsafe-optional-chaining": "off"
+            }
+        }
+    ],
+    "env": {
+        "browser": false,
+        "es6": true,
+        "node": true,
+    }
 }

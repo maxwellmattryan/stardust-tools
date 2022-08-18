@@ -16,7 +16,7 @@ import { getFaucetApiEndpoint, makeFaucetRequests } from './faucet.helper'
 /**
  * Spreads funds to addresses of accounts of a particular seed.
  */
-export async function spreadFunds(parameters: IFundsSpreaderParameters, round: number = 1): Promise<void> {
+export async function spreadFunds(parameters: IFundsSpreaderParameters, round = 1): Promise<void> {
     const manager = await initialiseAccountManager(parameters, round)
 
     const highestAccountIndex = Math.max(

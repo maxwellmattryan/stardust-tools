@@ -5,8 +5,6 @@
         "moduleResolution": "node",
         "types": ["node"]
     },
-    "include": [
-        "tools/funds-spreader"
-    ],
+    "include": ["tools/funds-spreader"],
     "exclude": ["**/node_modules", "**/tests"]
 }

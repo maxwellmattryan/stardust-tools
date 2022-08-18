@@ -10,10 +10,13 @@
         "tools/funds-spreader"
     ],
     "scripts": {
-        "format": "prettier --write **/*.{ts,json,md}",
-        "format-check": "prettier --check **/*.{ts,json,md}",
-        "lint": "eslint --cache --fix **/*.{ts,js}",
-        "lint-check": "eslint --cache --debug **/*.{ts,js}",
+        "docs:start": "cd docs && retype watch",
+        "format": "yarn format:fix",
+        "format:check": "prettier --check **/*.{ts,json,md}",
+        "format:fix": "prettier --write **/*.{ts,json,md}",
+        "lint": "yarn lint:fix",
+        "lint:check": "eslint --cache --debug **/*.{ts,js}",
+        "lint:fix": "eslint --cache --fix **/*.{ts,js}",
         "tool:funds-spreader": "cd tools/funds-spreader && yarn execute"
     },
     "dependencies": {
@@ -27,10 +30,11 @@
         "husky": "^8.0.1",
         "lint-staged": "^13.0.3",
         "prettier": "^2.7.1",
+        "retypeapp": "^2.4.0",
         "typescript": "^4.7.4"
     },
     "lint-staged": {
         "*.{ts,js}": "eslint --cache --fix",
-        "*.{ts,js,json,md}": "prettier --write"
+        "*.{ts,js,json,md,html}": "prettier --write"
     }
 }

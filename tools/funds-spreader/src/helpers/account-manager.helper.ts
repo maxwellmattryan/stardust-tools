@@ -38,7 +38,7 @@ function buildAccountManager(parameters: IFundsSpreaderParameters, round: number
             nodes: [getNodeUrlFromCoinType(parameters?.addressEncodingCoinType)],
             localPow: true,
         },
-        coinType: parameters?.addressGenerationCoinType,
+        coinType: parameters?.addressDerivationCoinType,
         secretManager: {
             Stronghold: {
                 snapshotPath: path.resolve(FUNDS_SPREADER_FILE_PATH, 'wallet.stronghold'),
@@ -55,7 +55,7 @@ export async function createStrongholdBackup(
     manager: AccountManager
 ): Promise<void> {
     const prefix = String(round).padStart(3, '0')
-    const gen = deriveCoinNameFromType(parameters?.addressGenerationCoinType)
+    const gen = deriveCoinNameFromType(parameters?.addressDerivationCoinType)
     const enc = deriveCoinNameFromType(parameters?.addressEncodingCoinType)
     const destination = `${BACKUP_FILE_PATH}/fs-${prefix}_gen-${gen}_enc-${enc}.stronghold`
     await manager?.backup(destination, STRONGHOLD_PASSWORD)

@@ -174,7 +174,7 @@ export const SHIMMER_CLAIMING_FUNDS_SPREADERS_PARAMETERS: IFundsSpreaderParamete
     // },
 ].map((fundsSpreaderParameters) => ({
     ...fundsSpreaderParameters,
-    addressGenerationCoinType: CoinType.Shimmer,
+    addressDerivationCoinType: CoinType.IOTA,
     addressEncodingCoinType: CoinType.Shimmer,
     requestFundsFromFaucet: false,
     backupToStrongholdFile: true,

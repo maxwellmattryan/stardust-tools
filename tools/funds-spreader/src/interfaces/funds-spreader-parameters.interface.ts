@@ -12,9 +12,9 @@ export interface IFundsSpreaderParameters {
     mnemonic: string
 
     /**
-     * The coin type used to generate Ed25519 addresses.
+     * The coin type BIP32 path parameter used to derive Ed25519 addresses.
      */
-    addressGenerationCoinType: CoinType
+    addressDerivationCoinType: CoinType
 
     /**
      * The coin type used for encoding Ed25519 addresses to Bech32 addresses with

@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: retypeapp/actions-build@v2
+      - uses: retypeapp/action-build@v2
         with:
           config: docs
 

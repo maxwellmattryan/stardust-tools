@@ -27,11 +27,3 @@ body:
       description: What are the requirements for this task?
     validations:
       required: true
-
-  - type: textarea
-    id: acceptance_criteria
-    attributes:
-      label: Acceptance Criteria
-      description: What is the criteria for this task to be considered "complete"?
-    validations:
-      required: true

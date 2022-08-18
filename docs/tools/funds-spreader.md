@@ -22,7 +22,7 @@ This is useful to test finding "balances" where the funds may reside on addresse
 
 Before using the funds spreader, you **MUST** configure your `.env` file:
 
-1. Copy the `.env.example` file located in [`stardust-tools/tools/funds-spreader/.env.example`](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/.env.example) and rename to `.env`
+1. Copy the `.env.example` file located in [`stardust-tools/tools/funds-spreader/.env.example`](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/.env.example){target=\_blank} and rename to `.env`
 2. Fill in each line where there is a blank string with a mnemonic (ideally different ones but could also be the same)
 
 ```bash
@@ -87,10 +87,10 @@ Optional:
 
 By default, the tool is setup to use the specific parameters for Shimmer claiming (reason being that this tool was originally created for testing this functionality in Firefly).
 
-Those parameters are located in [`stardust-tools/tools/funds-spreader/src/constants/funds-spreaders-parameters`](https://github.com/maxwellmattryan/stardust-tools/tree/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters).
+Those parameters are located in [`stardust-tools/tools/funds-spreader/src/constants/funds-spreaders-parameters`](https://github.com/maxwellmattryan/stardust-tools/tree/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters){target=\_blank}.
 
 :::info
-If you wish to change the `coin_type` parameter that the addresses are _derived_ (**NOT** _encoded_ as Stardust hasn't yet reached IOTA) with, then please edit [this line](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters/shimmer-claiming-funds-spreaders-parameters.ts#L173).
+If you wish to change the `coin_type` parameter that the addresses are _derived_ (**NOT** _encoded_ as Stardust hasn't yet reached IOTA) with, then please edit [this line](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters/shimmer-claiming-funds-spreaders-parameters.ts#L173){target=\_blank}.
 :::
 
 #### Custom Scenarios
@@ -101,8 +101,8 @@ Use the following steps to make sure the funds spreader works properly when usin
 
 1. Create a new TypeScript file in `stardust-tools/tools/funds-spreader/src/constants/funds-spreaders-parameters`
 2. Properly declare and define a variable of type `IFundsSpreaderParameters[]` with the specific configuration
-3. Barrel export your newly created file by adding another line in [`stardust-tools/tools/funds-spreader/src/constants/funds-spreaders-parameters/index.ts`](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters/index.ts)
-4. In `stardust-tools/tools/funds-spreader/src/main.ts`, please change [this line](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/main.ts#L9)
+3. Barrel export your newly created file by adding another line in [`stardust-tools/tools/funds-spreader/src/constants/funds-spreaders-parameters/index.ts`](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters/index.ts){target=\_blank}
+4. In `stardust-tools/tools/funds-spreader/src/main.ts`, please change [this line](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/main.ts#L9){target=\_blank}
 
 [^1]:
     The `coin_type` parameter is **NOT** technically relevant to how the address is encoded, only BIP32.

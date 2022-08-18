@@ -105,10 +105,9 @@ Use the following steps to make sure the funds spreader works properly when usin
 4. In `stardust-tools/tools/funds-spreader/src/main.ts`, please change [this line](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/main.ts#L9){target=\_blank}
 
 [^1]:
-    The `coin_type` parameter is **NOT** technically relevant to how the address is encoded, only BIP32.
-    It used simply used here for convenience as both a user and developer of this tool.
+The `coin_type` parameter is **NOT** technically relevant to how the address is encoded, only BIP32.
+It used simply used here for convenience as both a user and developer of this tool.
 
 [^2]:
-
 Due to the way the funds spreader works (requesting funds from a faucet rather than making transfers of your own funds), it will **NOT** work for any mainnet funds (IOTA _or_ SMR).
 Although this is a potential feature to add in the future, e.g. a `FundsSpreaderStrategy` that indicates how exactly to "spread funds" amongst addresses.

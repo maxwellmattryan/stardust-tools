@@ -12,8 +12,8 @@
     "scripts": {
         "docs:start": "cd docs && retype watch",
         "format": "yarn format:fix",
-        "format:check": "prettier --check **/*.{ts,js,json,md,html}",
-        "format:fix": "prettier --write **/*.{ts,js,json,md,html}",
+        "format:check": "prettier --check **/*.{ts,js,json,html}",
+        "format:fix": "prettier --write **/*.{ts,js,json,html}",
         "lint": "yarn lint:fix",
         "lint:check": "eslint --cache --debug **/*.{ts,js}",
         "lint:fix": "eslint --cache --fix **/*.{ts,js}",
@@ -35,6 +35,6 @@
     },
     "lint-staged": {
         "*.{ts,js}": "eslint --cache --fix",
-        "*.{ts,js,json,md,html}": "prettier --write"
+        "*.{ts,js,json,html}": "prettier --write"
     }
 }

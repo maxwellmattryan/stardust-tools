@@ -6,3 +6,5 @@
 > A suite of (TypeScript-based) based tools useful in development of software for the IOTA and Shimmer networks 🛠️
 
 Checkout the [Getting Started](https://maxwellmattryan.github.io/stardust-tools/getting-started) docs to... get started 🙂
+
+⚠️Until the Stardust upgrade is brought to the IOTA mainnet, this tool **ONLY** supports Shimmer networks.

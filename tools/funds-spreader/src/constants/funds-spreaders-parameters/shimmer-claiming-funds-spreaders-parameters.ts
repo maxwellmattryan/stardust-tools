@@ -1,10 +1,6 @@
 import { CoinType } from '@iota/wallet'
 
 import { IFundsSpreaderParameters } from '../../interfaces'
-import { ENV_FILE_PATH } from '../file-path.constants'
-
-import * as dotenv from 'dotenv'
-dotenv.config({ path: ENV_FILE_PATH })
 
 /**
  * The specific funds spreaders parameters for Shimmer claiming testing.

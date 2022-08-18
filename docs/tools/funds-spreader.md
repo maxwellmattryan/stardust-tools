@@ -90,7 +90,7 @@ By default, the tool is setup to use the specific parameters for Shimmer claimin
 Those parameters are located in [`stardust-tools/tools/funds-spreader/src/constants/funds-spreaders-parameters`](https://github.com/maxwellmattryan/stardust-tools/tree/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters).
 
 :::info
-If you wish to change the `coin_type` parameter that the addresses are _derived_ (**NOT** _encoded_ as Stardust hasn't yet reached IOTA) with, then please edit [this line](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters/shimmer-claiming-funds-spreaders-parameters.ts#L177).
+If you wish to change the `coin_type` parameter that the addresses are _derived_ (**NOT** _encoded_ as Stardust hasn't yet reached IOTA) with, then please edit [this line](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters/shimmer-claiming-funds-spreaders-parameters.ts#L173).
 :::
 
 #### Custom Scenarios

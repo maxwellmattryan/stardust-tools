@@ -5,7 +5,7 @@ favicon: "static/wizard-wand.png"
 
 branding:
   title: Stardust Tools
-  label: v1.0.0
+  label: v1.0.0-beta
   logo: static/wizard-wand.svg
 
 meta:

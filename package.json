@@ -1,6 +1,6 @@
 {
     "name": "stardust-tools",
-    "version": "1.0.0",
+    "version": "1.0.0-beta",
     "description": "A suite of tools useful in development of software for the IOTA and Shimmer networks",
     "author": "Matthew Maxwell <maxwellmattryan@gmail.com>",
     "repository": "git@github.com:maxwellmattryan/stardust-tools.git",

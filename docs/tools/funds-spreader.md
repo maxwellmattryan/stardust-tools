@@ -80,8 +80,17 @@ Required:
 
 Optional:
 
--   `requestFundsFromFaucet`: a boolean value to indicate whether or not to actually send fund requests to the faucet, `true` by default
--   `backupToStrongholdFile`: a boolean value to indicate whether or not to backup each profile / account manager to a specific Stronghold backup file, `false` by default
+- `requestFundsFromFaucet`: a boolean value to indicate whether or not to actually send fund requests to the faucet, `true` by default
+
+    :::caution
+    If you receive a `400`, `429`, or even a `500` error when this is set to `true`, please adjust the sleep intervals constants (see [here](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/sleep.constants.ts){target=_blank}).
+    :::
+
+- `backupToStrongholdFile`: a boolean value to indicate whether or not to backup each profile / account manager to a specific Stronghold backup file, `false` by default
+
+    :::info
+    The Stronghold backup files are located in the `stardust-tools/tools/funds-spreader/temp/backups` directory, which is created or overwritten when running the tool.
+    :::
 
 #### Shimmer Claiming
 

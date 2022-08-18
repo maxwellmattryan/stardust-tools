@@ -9,7 +9,10 @@ import { IAccountFundsSpreaderParameters } from '../interfaces'
 
 let accounts: Account[] = []
 
-export async function createAccounts(numberOfAccounts: number, manager: AccountManager): Promise<void> {
+/**
+ * Creates a specific number of accounts, storing them to be used later.
+ */
+export async function createAndStoreAccounts(numberOfAccounts: number, manager: AccountManager): Promise<void> {
     const emptyArrayOfIndices = Array.from({ length: numberOfAccounts })
     await Promise.all(
         emptyArrayOfIndices.map(async () => {
@@ -19,14 +22,25 @@ export async function createAccounts(numberOfAccounts: number, manager: AccountM
     )
 }
 
+/**
+ * Empties any previously stored accounts.
+ */
 export function clearAccounts(): void {
     accounts = []
 }
 
+/**
+ * Retrieves an account of a specific index, so
+ * long as it has been created and stored.
+ */
 export function getAccountAtIndex(index: number): Account | undefined {
     return accounts.find((account) => account?.meta?.index === index)
 }
 
+/**
+ * Retrieves the addresses of an account as specified
+ * by the given account funds spreader parameters
+ */
 export async function getAddressesForAccount(
     parameters: IAccountFundsSpreaderParameters,
     account: Account

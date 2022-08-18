@@ -10,7 +10,7 @@ import { ACCOUNT_FUNDS_SPREADER_SLEEP_INTERVAL } from '../constants'
 import { IAccountFundsSpreaderParameters, IFundsSpreaderParameters } from '../interfaces'
 import { sleep } from '../utils'
 
-import { clearAccounts, createAccounts, getAccountAtIndex, getAddressesForAccount } from './account.helper'
+import { clearAccounts, createAndStoreAccounts, getAccountAtIndex, getAddressesForAccount } from './account.helper'
 import { createStrongholdBackup, initialiseAccountManager } from './account-manager.helper'
 import { getFaucetApiEndpoint, makeFaucetRequests } from './faucet.helper'
 import { logInformationToConsole } from './logging.helper'
@@ -26,7 +26,7 @@ export async function spreadFunds(parameters: IFundsSpreaderParameters, round = 
             (accountFundsSpreaderParameters) => accountFundsSpreaderParameters?.accountIndex
         )
     )
-    await createAccounts(highestAccountIndex + 1, manager)
+    await createAndStoreAccounts(highestAccountIndex + 1, manager)
 
     for (const accountFundsSpreaderParameters of parameters?.accountsFundsSpreaderParameters) {
         await spreadFundsForAccount(

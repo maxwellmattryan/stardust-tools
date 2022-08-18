@@ -49,6 +49,9 @@ function buildAccountManager(parameters: IFundsSpreaderParameters, round: number
     return new AccountManager(accountManagerOptions)
 }
 
+/**
+ * Exports a Stronghold backup file of the given manager's current state.
+ */
 export async function createStrongholdBackup(
     parameters: IFundsSpreaderParameters,
     round: number,

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://maxwellmattryan.github.io/stardust-tools/sitemap.xml.gz

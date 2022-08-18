@@ -4,14 +4,16 @@
 // @ts-ignore
 import { Promise } from 'bluebird'
 
-import { Account, AccountManager, Address, CoinType } from '@iota/wallet'
+import { AccountManager, CoinType } from '@iota/wallet'
 
 import { ACCOUNT_FUNDS_SPREADER_SLEEP_INTERVAL } from '../constants'
 import { IAccountFundsSpreaderParameters, IFundsSpreaderParameters } from '../interfaces'
 import { sleep } from '../utils'
 
+import { clearAccounts, createAccounts, getAccountAtIndex, getAddressesForAccount } from './account.helper'
 import { createStrongholdBackup, initialiseAccountManager } from './account-manager.helper'
 import { getFaucetApiEndpoint, makeFaucetRequests } from './faucet.helper'
+import { logInformationToConsole } from './logging.helper'
 
 /**
  * Spreads funds to addresses of accounts of a particular seed.
@@ -60,55 +62,4 @@ async function spreadFundsForAccount(
     }
 
     logInformationToConsole(mnemonic, round, account?.meta?.index, addresses)
-}
-
-let accounts: Account[] = []
-
-async function createAccounts(numberOfAccounts: number, manager: AccountManager): Promise<void> {
-    const emptyArrayOfIndices = Array.from({ length: numberOfAccounts })
-    await Promise.all(
-        emptyArrayOfIndices.map(async () => {
-            const account = await manager?.createAccount({})
-            accounts.push(account)
-        })
-    )
-}
-
-function clearAccounts(): void {
-    accounts = []
-}
-
-function getAccountAtIndex(index: number): Account | undefined {
-    return accounts.find((account) => account?.meta?.index === index)
-}
-
-async function getAddressesForAccount(
-    parameters: IAccountFundsSpreaderParameters,
-    account: Account
-): Promise<Address[]> {
-    const highestAddressIndex = Math.max(...parameters?.addressIndicesWithFunds)
-    if (highestAddressIndex < 0) return []
-
-    const addressesBeyondIndexZero = await account?.generateAddresses(highestAddressIndex)
-    const addressAtIndexZero = account?.meta?.publicAddresses[0]
-    const addresses = [addressAtIndexZero, ...addressesBeyondIndexZero]
-    return addresses.filter((address) => parameters?.addressIndicesWithFunds.includes(address?.keyIndex))
-}
-
-/**
- * Array to keep track of what funds spreader runds have already been logged.
- */
-const loggedFundsSpreaderRounds: number[] = []
-
-function logInformationToConsole(mnemonic: string, round: number, accountIndex: number, addresses: Address[]): void {
-    if (!loggedFundsSpreaderRounds.includes(round)) {
-        console.log(`Fund Spreader No. ${round}`)
-        console.log(mnemonic, '\n')
-        loggedFundsSpreaderRounds.push(round)
-    }
-    console.log(`\tAccount ${accountIndex}:`)
-    addresses.forEach((address) => {
-        console.log(`\t\tAddress ${address?.keyIndex}: ${address?.address}`)
-    })
-    console.log()
 }

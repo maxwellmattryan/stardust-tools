@@ -1,4 +1,6 @@
+export * from './account.helper'
 export * from './account-manager.helper'
 export * from './faucet.helper'
 export * from './funds-spreader.helper'
+export * from './logging.helper'
 export * from './node.helper'

@@ -15,7 +15,7 @@ order: 999
     git clone git@github.com:maxwellmattryan/stardust-tools.git
     ```
 
-2. Install required dependencies (this step may take awhile, feel free to continue)
+2. Install required dependencies
 
     ```bash
     # In root repository directory

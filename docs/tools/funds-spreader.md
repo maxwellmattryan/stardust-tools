@@ -6,7 +6,7 @@ icon: credit-card
 
 The funds spreader tool requests funds from a faucet to a set of addresses at given account and address indices, of a given address derivation path and address encoding scheme.
 
-Please [see below](#parameters) for more detail on the available parameters.
+If you haven't already, please see [Getting Started](../getting-started.md) before using trying this tool out. Otherwise, please [see below](#parameters) for more detail on the available parameters.
 
 :::caution
 The tool does **NOT** currently work for the IOTA devnet.
@@ -25,6 +25,10 @@ Before using the funds spreader, you **MUST** configure your `.env` file:
 1. Copy the `.env.example` file located in [`stardust-tools/tools/funds-spreader/.env.example`](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/.env.example){target=\_blank} and rename to `.env`
 2. Fill in each line where there is a blank string with a mnemonic (ideally different ones but could also be the same)
 
+:::danger
+It is **NOT** recommended to use a mnemonic where real, mainnet funds reside. **Please proceed with caution**.
+:::
+
 ```bash
 # stardust-tools/tools/funds-spreader/.env
 
@@ -32,6 +36,10 @@ MNEMONIC_001="kind kidney lottery soon ball trade nest interest latin joke oval 
 MNEMONIC_002="sport moon venture frozen deposit limb civil buzz remain recall mercy monitor soldier elbow lemon make motor observe inform hip coffee bacon eye way"
 ...
 ```
+
+:::info
+This [BIP39 mnemonic generator](https://iancoleman.io/bip39/){target=_blank} is a useful tool for quickly creating valid mnemonics (be sure to use 24 words).
+:::
 
 ### Running
 
@@ -79,6 +87,12 @@ Required:
 -   `accountsFundsSpreadersParameters[]`: an array of per-account parameter objects that contain an `accountIndex` and an array of `addressIndicesWithFunds`
 
 Optional:
+
+- `networkType`: a specific network, i.e. testnet or alphanet, testnet by default
+
+    :::info
+    If the testnet is busy, sometimes the faucet will error when making requests. Simply change [this line](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters/shimmer-claiming-funds-spreaders-parameters.ts#L176){target=_blank} to use the alphanet and try again.
+    :::
 
 - `requestFundsFromFaucet`: a boolean value to indicate whether or not to actually send fund requests to the faucet, `true` by default
 

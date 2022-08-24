@@ -20,7 +20,7 @@
         "tool:funds-spreader": "cd tools/funds-spreader && yarn execute"
     },
     "dependencies": {
-        "@iota/wallet": "2.0.2-alpha.11"
+        "@iota/wallet": "^2.0.2-alpha.21"
     },
     "devDependencies": {
         "@types/node": "^18.7.6",

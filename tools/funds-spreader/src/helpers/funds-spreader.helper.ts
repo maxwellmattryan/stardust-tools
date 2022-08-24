@@ -14,7 +14,7 @@ import { clearAccounts, createAndStoreAccounts, getAccountAtIndex, getAddressesF
 import { createStrongholdBackup, initialiseAccountManager } from './account-manager.helper'
 import { getFaucetApiEndpoint, makeFaucetRequests } from './faucet.helper'
 import { logInformationToConsole } from './logging.helper'
-import {NetworkType} from "../enums";
+import { NetworkType } from '../enums'
 
 /**
  * Spreads funds to addresses of accounts of a particular seed.

@@ -1,7 +1,7 @@
-import {CoinType} from '@iota/wallet'
+import { CoinType } from '@iota/wallet'
 
-import {IFundsSpreaderParameters} from '../../interfaces'
-import {NetworkType} from "../../enums";
+import { IFundsSpreaderParameters } from '../../interfaces'
+import { NetworkType } from '../../enums'
 
 /**
  * The specific funds spreaders parameters for Shimmer claiming testing.

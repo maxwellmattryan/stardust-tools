@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-import {Address, CoinType} from '@iota/wallet'
+import { Address, CoinType } from '@iota/wallet'
 
 import {
     FAUCET_REQUEST_SLEEP_INTERVAL,
     IOTA_FAUCET_API_ENDPOINT,
     SHIMMER_ALPHANET_FAUCET_API_ENDPOINT,
-    SHIMMER_TESTNET_FAUCET_API_ENDPOINT
+    SHIMMER_TESTNET_FAUCET_API_ENDPOINT,
 } from '../constants'
 import { NetworkType } from '../enums'
 import { IFaucetRequestData } from '../interfaces'

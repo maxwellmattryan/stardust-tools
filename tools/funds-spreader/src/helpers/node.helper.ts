@@ -1,11 +1,7 @@
-import {CoinType} from '@iota/wallet'
+import { CoinType } from '@iota/wallet'
 
-import {
-    IOTA_NODE_URL,
-    SHIMMER_ALPHANET_NODE_URL,
-    SHIMMER_TESTNET_NODE_URL
-} from '../constants'
-import {NetworkType} from '../enums'
+import { IOTA_NODE_URL, SHIMMER_ALPHANET_NODE_URL, SHIMMER_TESTNET_NODE_URL } from '../constants'
+import { NetworkType } from '../enums'
 
 /**
  * Returns the corresponding node URL given the specific coin type.

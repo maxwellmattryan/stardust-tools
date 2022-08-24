@@ -1,20 +1,35 @@
 import axios from 'axios'
 
-import { Address, CoinType } from '@iota/wallet'
+import {Address, CoinType} from '@iota/wallet'
 
-import { FAUCET_REQUEST_SLEEP_INTERVAL, IOTA_FAUCET_API_ENDPOINT, SHIMMER_FAUCET_API_ENDPOINT } from '../constants'
+import {
+    FAUCET_REQUEST_SLEEP_INTERVAL,
+    IOTA_FAUCET_API_ENDPOINT,
+    SHIMMER_ALPHANET_FAUCET_API_ENDPOINT,
+    SHIMMER_TESTNET_FAUCET_API_ENDPOINT
+} from '../constants'
+import { NetworkType } from '../enums'
 import { IFaucetRequestData } from '../interfaces'
 import { sleep } from '../utils'
 
 /**
  * Returns the corresponding faucet API endpoint given a specific coin type.
  */
-export function getFaucetApiEndpoint(coinType: CoinType): string {
+export function getFaucetApiEndpoint(coinType: CoinType, networkType: NetworkType): string {
     switch (coinType) {
         case CoinType.IOTA:
             return IOTA_FAUCET_API_ENDPOINT
         case CoinType.Shimmer:
-            return SHIMMER_FAUCET_API_ENDPOINT
+            switch (networkType) {
+                case NetworkType.Mainnet:
+                    return ''
+                case NetworkType.Testnet:
+                    return SHIMMER_TESTNET_FAUCET_API_ENDPOINT
+                case NetworkType.Alphanet:
+                    return SHIMMER_ALPHANET_FAUCET_API_ENDPOINT
+                default:
+                    return ''
+            }
         default:
             return ''
     }

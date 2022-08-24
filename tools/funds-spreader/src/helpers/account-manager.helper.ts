@@ -35,7 +35,7 @@ function buildAccountManager(parameters: IFundsSpreaderParameters, round: number
     const accountManagerOptions = {
         storagePath: path.resolve(FUNDS_SPREADER_FILE_PATH, 'database'),
         clientOptions: {
-            nodes: [getNodeUrlFromCoinType(parameters?.addressEncodingCoinType)],
+            nodes: [getNodeUrlFromCoinType(parameters?.addressEncodingCoinType, parameters?.networkType)],
             localPow: true,
         },
         coinType: parameters?.addressDerivationCoinType,

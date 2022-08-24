@@ -1,16 +1,30 @@
-import { CoinType } from '@iota/wallet'
+import {CoinType} from '@iota/wallet'
 
-import { IOTA_NODE_URL, SHIMMER_NODE_URL } from '../constants'
+import {
+    IOTA_NODE_URL,
+    SHIMMER_ALPHANET_NODE_URL,
+    SHIMMER_TESTNET_NODE_URL
+} from '../constants'
+import {NetworkType} from '../enums'
 
 /**
  * Returns the corresponding node URL given the specific coin type.
  */
-export function getNodeUrlFromCoinType(coinType: CoinType): string {
+export function getNodeUrlFromCoinType(coinType: CoinType, networkType: NetworkType): string {
     switch (coinType) {
         case CoinType.IOTA:
             return IOTA_NODE_URL
         case CoinType.Shimmer:
-            return SHIMMER_NODE_URL
+            switch (networkType) {
+                case NetworkType.Mainnet:
+                    return ''
+                case NetworkType.Testnet:
+                    return SHIMMER_TESTNET_NODE_URL
+                case NetworkType.Alphanet:
+                    return SHIMMER_ALPHANET_NODE_URL
+                default:
+                    return ''
+            }
         default:
             return ''
     }

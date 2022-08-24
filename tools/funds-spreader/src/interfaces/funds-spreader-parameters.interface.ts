@@ -1,5 +1,7 @@
 import { CoinType } from '@iota/wallet'
 
+import { NetworkType } from '../enums'
+
 import { IAccountFundsSpreaderParameters } from './account-funds-spreader-parameters.interface'
 
 /**
@@ -30,6 +32,12 @@ export interface IFundsSpreaderParameters {
      * what addresses hold funds, etc.
      */
     accountsFundsSpreaderParameters: IAccountFundsSpreaderParameters[]
+
+    /**
+     * The specific type of network to connect to for the client options
+     * and the faucet.
+     */
+    networkType: NetworkType
 
     /**
      * Specifies whether to actually make requests to the faucet for each generated address.

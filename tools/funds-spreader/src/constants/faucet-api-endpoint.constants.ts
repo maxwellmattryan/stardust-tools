@@ -7,6 +7,11 @@
 export const IOTA_FAUCET_API_ENDPOINT = ''
 
 /**
- * The API endpoint of the Shimmer faucet where funds are requested.
+ * The API endpoint of the Shimmer testnet faucet where funds are requested.
  */
-export const SHIMMER_FAUCET_API_ENDPOINT = 'https://faucet.alphanet.iotaledger.net/api/enqueue'
+export const SHIMMER_TESTNET_FAUCET_API_ENDPOINT = 'https://faucet.testnet.shimmer.network/api/enqueue'
+
+/**
+ * The API endpoint of the Shimmer alphanet faucet where funds are requested.
+ */
+export const SHIMMER_ALPHANET_FAUCET_API_ENDPOINT = 'https://faucet.alphanet.iotaledger.net/api/enqueue'

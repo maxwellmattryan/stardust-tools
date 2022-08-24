@@ -7,6 +7,11 @@
 export const IOTA_NODE_URL = ''
 
 /**
- * The Shimmer node URL to use in the account manager's client options.
+ * The Shimmer testnet node URL to use in the account manager's client options.
  */
-export const SHIMMER_NODE_URL = 'https://api.testnet.shimmer.network'
+export const SHIMMER_TESTNET_NODE_URL = 'https://api.testnet.shimmer.network'
+
+/**
+ * The Shimmer alphanet node URL to use in the account manager's client options.
+ */
+export const SHIMMER_ALPHANET_NODE_URL = 'https://api.alphanet.iotaledger.net'

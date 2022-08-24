@@ -1,6 +1,7 @@
-import { CoinType } from '@iota/wallet'
+import {CoinType} from '@iota/wallet'
 
-import { IFundsSpreaderParameters } from '../../interfaces'
+import {IFundsSpreaderParameters} from '../../interfaces'
+import {NetworkType} from "../../enums";
 
 /**
  * The specific funds spreaders parameters for Shimmer claiming testing.
@@ -172,6 +173,7 @@ export const SHIMMER_CLAIMING_FUNDS_SPREADERS_PARAMETERS: IFundsSpreaderParamete
     ...fundsSpreaderParameters,
     addressDerivationCoinType: CoinType.IOTA,
     addressEncodingCoinType: CoinType.Shimmer,
+    networkType: NetworkType.Alphanet,
     requestFundsFromFaucet: true,
     backupToStrongholdFile: true,
 }))

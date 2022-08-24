@@ -14,6 +14,7 @@ import { clearAccounts, createAndStoreAccounts, getAccountAtIndex, getAddressesF
 import { createStrongholdBackup, initialiseAccountManager } from './account-manager.helper'
 import { getFaucetApiEndpoint, makeFaucetRequests } from './faucet.helper'
 import { logInformationToConsole } from './logging.helper'
+import {NetworkType} from "../enums";
 
 /**
  * Spreads funds to addresses of accounts of a particular seed.
@@ -35,6 +36,7 @@ export async function spreadFunds(parameters: IFundsSpreaderParameters, round = 
             accountFundsSpreaderParameters,
             manager,
             parameters?.addressEncodingCoinType,
+            parameters?.networkType,
             round
         )
         await sleep(ACCOUNT_FUNDS_SPREADER_SLEEP_INTERVAL)
@@ -52,13 +54,14 @@ async function spreadFundsForAccount(
     parameters: IAccountFundsSpreaderParameters,
     manager: AccountManager,
     coinType: CoinType,
+    networkType: NetworkType,
     round: number
 ): Promise<void> {
     const account = getAccountAtIndex(parameters?.accountIndex)
     const addresses = await getAddressesForAccount(parameters, account)
 
     if (requestFundsFromFaucet) {
-        await makeFaucetRequests(getFaucetApiEndpoint(coinType), addresses)
+        await makeFaucetRequests(getFaucetApiEndpoint(coinType, networkType), addresses)
     }
 
     logInformationToConsole(mnemonic, round, account?.meta?.index, addresses)

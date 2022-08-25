@@ -4,17 +4,21 @@ icon: credit-card
 
 # Funds Spreader
 
-The funds spreader tool requests funds from a faucet to a set of addresses at given account and address indices, of a given address derivation path and address encoding scheme.
-
-If you haven't already, please see [Getting Started](../getting-started.md) before using trying this tool out. Otherwise, please [see below](#parameters) for more detail on the available parameters.
+If you haven't already, please see [Getting Started](../getting-started.md) before using trying this tool out.
 
 :::caution
 The tool does **NOT** currently work for the IOTA devnet.
 :::
 
-## What to Use For
+## How it Works
 
-This is useful to test finding "balances" where the funds may reside on addresses, many indices apart. If you wish to put funds on address index `9_999_999` then you certainly can 🙂
+Simply put, the funds spreader tool...
+
+1. Reads in a mnemonic from `stardust-tools/tools/funds-spreader/.env` and generates accounts and addresses at specific indices
+2. Requests funds from a faucet to every generated address
+3. Creates a Stronghold backup in `stardust-tools/tools/funds-spreader/temp/backups`
+
+Please [see below](#parameters) for more detail on the available parameters.
 
 ## How to Use
 
@@ -26,7 +30,7 @@ Before using the funds spreader, you **MUST** configure your `.env` file:
 2. Fill in each line where there is a blank string with a mnemonic (ideally different ones but could also be the same)
 
 :::danger
-It is **NOT** recommended to use a mnemonic where real, mainnet funds reside. **Please proceed with caution**.
+Although this tool **NEVER** uses a mainnet node, it is **NOT** recommended to use a mnemonic where real funds reside. **Please proceed at your own risk**.
 :::
 
 ```bash
@@ -88,7 +92,7 @@ Required:
 
 Optional:
 
-- `networkType`: a specific network, i.e. testnet or alphanet, testnet by default
+- `networkType`: a specific network, i.e. `testnet` or `alphanet`, testnet by default
 
     :::info
     If the testnet is busy, sometimes the faucet will error when making requests. Simply change [this line](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters/shimmer-claiming-funds-spreaders-parameters.ts#L176){target=_blank} to use the alphanet and try again.
@@ -100,7 +104,7 @@ Optional:
     If you receive a `400`, `429`, or even a `500` error when this is set to `true`, please adjust the sleep intervals constants (see [here](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/sleep.constants.ts){target=_blank}).
     :::
 
-- `backupToStrongholdFile`: a boolean value to indicate whether or not to backup each profile / account manager to a specific Stronghold backup file, `false` by default
+- `backupToStrongholdFile`: a boolean value to indicate whether or not to backup each profile / account manager to a specific Stronghold backup file, `true` by default
 
     :::info
     The Stronghold backup files are located in the `stardust-tools/tools/funds-spreader/temp/backups` directory, which is created or overwritten when running the tool.
@@ -128,7 +132,7 @@ Use the following steps to make sure the funds spreader works properly when usin
 4. In `stardust-tools/tools/funds-spreader/src/main.ts`, please change [this line](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/main.ts#L9){target=\_blank}
 
 [^1]:
-The `coin_type` parameter is **NOT** technically relevant to how the address is encoded, only BIP32.
+The `coin_type` parameter is **NOT** technically relevant to how the address is encoded (that is determined by the Bech32 HRP), only derived.
 It used simply used here for convenience as both a user and developer of this tool.
 
 [^2]:

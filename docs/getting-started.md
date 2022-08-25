@@ -5,6 +5,13 @@ order: 999
 
 # Getting Started
 
+## Requirements
+
+- [NodeJS](https://nodejs.org/en/) (`16.17.0`)
+- [Yarn](https://yarnpkg.com/) (`1.22.19`)
+
+## Setup
+
 1. Clone this repository
 
     ```bash

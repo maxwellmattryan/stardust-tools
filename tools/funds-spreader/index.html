@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/stardust-tools">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.714696178024">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.714756622774">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -12,7 +12,7 @@
     <!-- Primary Meta Tags -->
     <title>Funds Spreader | Stardust Tools</title>
     <meta name="title" content="Funds Spreader | Stardust Tools">
-    <meta name="description" content="The funds spreader tool requests funds from a faucet to a set of addresses at given account and address indices, of a given address derivation path..." />
+    <meta name="description" content="If you haven't already, please see Getting Started before using trying this tool out." />
 
     <!-- Canonical -->
     <link rel="canonical" href="https://maxwellmattryan.github.io/stardust-tools/tools/funds-spreader/" />
@@ -21,23 +21,23 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://maxwellmattryan.github.io/stardust-tools/tools/funds-spreader/">
     <meta property="og:title" content="Funds Spreader | Stardust Tools">
-    <meta property="og:description" content="The funds spreader tool requests funds from a faucet to a set of addresses at given account and address indices, of a given address derivation path...">
+    <meta property="og:description" content="If you haven't already, please see Getting Started before using trying this tool out.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://maxwellmattryan.github.io/stardust-tools/tools/funds-spreader/">
     <meta property="twitter:title" content="Funds Spreader | Stardust Tools">
-    <meta property="twitter:description" content="The funds spreader tool requests funds from a faucet to a set of addresses at given account and address indices, of a given address derivation path...">
+    <meta property="twitter:description" content="If you haven't already, please see Getting Started before using trying this tool out.">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/stardust-tools/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/wizard-wand.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.714696178024" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.714756622774" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.714696178024" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.714756622774" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.714696178024" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.714696178024" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.714756622774" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.714756622774" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -253,8 +253,7 @@
         <span>Funds Spreader</span>
     </h1>
 </doc-anchor-target>
-<p>The funds spreader tool requests funds from a faucet to a set of addresses at given account and address indices, of a given address derivation path and address encoding scheme.</p>
-<p>If you haven&#x27;t already, please see <a href="../../getting-started/">Getting Started</a> before using trying this tool out. Otherwise, please <doc-anchor-trigger to="#parameters">see below</doc-anchor-trigger> for more detail on the available parameters.</p>
+<p>If you haven&#x27;t already, please see <a href="../../getting-started/">Getting Started</a> before using trying this tool out.</p>
 <div class="flex mb-6">
     <div class="shrink-0 w-1 rounded-tl rounded-bl bg-yellow-500"></div>
     <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
@@ -272,13 +271,19 @@
         </div>
     </div>
 </div>
-<doc-anchor-target id="what-to-use-for">
+<doc-anchor-target id="how-it-works">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#what-to-use-for">#</doc-anchor-trigger>
-        <span>What to Use For</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#how-it-works">#</doc-anchor-trigger>
+        <span>How it Works</span>
     </h2>
 </doc-anchor-target>
-<p>This is useful to test finding &quot;balances&quot; where the funds may reside on addresses, many indices apart. If you wish to put funds on address index <code v-pre>9_999_999</code> then you certainly can <span class="docs-emoji">&#x1F642;</span></p>
+<p>Simply put, the funds spreader tool...</p>
+<ol>
+<li>Reads in a mnemonic from <code v-pre>stardust-tools/tools/funds-spreader/.env</code> and generates accounts and addresses at specific indices</li>
+<li>Requests funds from a faucet to every generated address</li>
+<li>Creates a Stronghold backup in <code v-pre>stardust-tools/tools/funds-spreader/temp/backups</code></li>
+</ol>
+<p>Please <doc-anchor-trigger to="#parameters">see below</doc-anchor-trigger> for more detail on the available parameters.</p>
 <doc-anchor-target id="how-to-use">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#how-to-use">#</doc-anchor-trigger>
@@ -309,7 +314,7 @@
         </div>
         <div class="pr-5 ml-3 w-full">
             <h5>DANGER</h5>
-<p>It is <strong>NOT</strong> recommended to use a mnemonic where real, mainnet funds reside. <strong>Please proceed with caution</strong>.</p>
+<p>Although this tool <strong>NEVER</strong> uses a mainnet node, it is <strong>NOT</strong> recommended to use a mnemonic where real funds reside. <strong>Please proceed at your own risk</strong>.</p>
         </div>
     </div>
 </div>
@@ -402,7 +407,7 @@ whisper bench borrow aware luxury cool ecology orchard certain urban force cradl
 </ul>
 <p>Optional:</p>
 <ul>
-<li><p><code v-pre>networkType</code>: a specific network, i.e. testnet or alphanet, testnet by default</p>
+<li><p><code v-pre>networkType</code>: a specific network, i.e. <code v-pre>testnet</code> or <code v-pre>alphanet</code>, testnet by default</p>
 <div class="flex mb-6">
     <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
     <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
@@ -441,7 +446,7 @@ whisper bench borrow aware luxury cool ecology orchard certain urban force cradl
     </div>
 </div>
 </li>
-<li><p><code v-pre>backupToStrongholdFile</code>: a boolean value to indicate whether or not to backup each profile / account manager to a specific Stronghold backup file, <code v-pre>false</code> by default</p>
+<li><p><code v-pre>backupToStrongholdFile</code>: a boolean value to indicate whether or not to backup each profile / account manager to a specific Stronghold backup file, <code v-pre>true</code> by default</p>
 <div class="flex mb-6">
     <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
     <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
@@ -506,7 +511,7 @@ whisper bench borrow aware luxury cool ecology orchard certain urban force cradl
 <hr />
 <ol>
 <li id="fn:1">
-<p>The <code v-pre>coin_type</code> parameter is <strong>NOT</strong> technically relevant to how the address is encoded, only BIP32.
+<p>The <code v-pre>coin_type</code> parameter is <strong>NOT</strong> technically relevant to how the address is encoded (that is determined by the Bech32 HRP), only derived.
 It used simply used here for convenience as both a user and developer of this tool.<a href="#fnref:1" class="footnote-back-ref">&#8617;</a></p>
 </li>
 <li id="fn:2">

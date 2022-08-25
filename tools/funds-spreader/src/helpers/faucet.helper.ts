@@ -21,8 +21,6 @@ export function getFaucetApiEndpoint(coinType: CoinType, networkType: NetworkTyp
             return IOTA_FAUCET_API_ENDPOINT
         case CoinType.Shimmer:
             switch (networkType) {
-                case NetworkType.Mainnet:
-                    return ''
                 case NetworkType.Testnet:
                     return SHIMMER_TESTNET_FAUCET_API_ENDPOINT
                 case NetworkType.Alphanet:

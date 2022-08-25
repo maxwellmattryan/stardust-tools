@@ -12,8 +12,6 @@ export function getNodeUrlFromCoinType(coinType: CoinType, networkType: NetworkT
             return IOTA_NODE_URL
         case CoinType.Shimmer:
             switch (networkType) {
-                case NetworkType.Mainnet:
-                    return ''
                 case NetworkType.Testnet:
                     return SHIMMER_TESTNET_NODE_URL
                 case NetworkType.Alphanet:

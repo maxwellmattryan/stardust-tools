@@ -108,6 +108,7 @@ Optional:
 
     :::info
     The Stronghold backup files are located in the `stardust-tools/tools/funds-spreader/temp/backups` directory, which is created or overwritten when running the tool.
+    The password to unlock the Strongholds is `hello-iota-1234` and is changeable [here](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/stronghold-password.constant.ts#L4).
     :::
 
 #### Shimmer Claiming

@@ -173,7 +173,7 @@ export const SHIMMER_CLAIMING_FUNDS_SPREADERS_PARAMETERS: IFundsSpreaderParamete
     ...fundsSpreaderParameters,
     addressDerivationCoinType: CoinType.IOTA,
     addressEncodingCoinType: CoinType.Shimmer,
-    networkType: NetworkType.Testnet,
+    networkType: NetworkType.Alphanet,
     requestFundsFromFaucet: true,
     backupToStrongholdFile: true,
 }))

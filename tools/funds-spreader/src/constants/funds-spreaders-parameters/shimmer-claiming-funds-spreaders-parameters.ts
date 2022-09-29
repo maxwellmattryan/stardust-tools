@@ -12,8 +12,8 @@ export const SHIMMER_CLAIMING_FUNDS_SPREADERS_PARAMETERS: IFundsSpreaderParamete
         mnemonic: process.env.MNEMONIC_001,
         accountsFundsSpreaderParameters: [
             {
-                accountIndex: 0,
-                addressIndicesWithFunds: [0, 1],
+                accountIndex: 4,
+                addressIndicesWithFunds: [51],
             },
         ],
     },
@@ -22,8 +22,8 @@ export const SHIMMER_CLAIMING_FUNDS_SPREADERS_PARAMETERS: IFundsSpreaderParamete
         mnemonic: process.env.MNEMONIC_002,
         accountsFundsSpreaderParameters: [
             {
-                accountIndex: 0,
-                addressIndicesWithFunds: [5, 10],
+                accountIndex: 12,
+                addressIndicesWithFunds: [12, 129],
             },
         ],
     },
@@ -32,8 +32,8 @@ export const SHIMMER_CLAIMING_FUNDS_SPREADERS_PARAMETERS: IFundsSpreaderParamete
         mnemonic: process.env.MNEMONIC_003,
         accountsFundsSpreaderParameters: [
             {
-                accountIndex: 2,
-                addressIndicesWithFunds: [0, 1],
+                accountIndex: 13,
+                addressIndicesWithFunds: [0, 51],
             },
         ],
     },
@@ -43,7 +43,7 @@ export const SHIMMER_CLAIMING_FUNDS_SPREADERS_PARAMETERS: IFundsSpreaderParamete
         accountsFundsSpreaderParameters: [
             {
                 accountIndex: 2,
-                addressIndicesWithFunds: [5, 10],
+                addressIndicesWithFunds: [130],
             },
         ],
     },
@@ -57,11 +57,11 @@ export const SHIMMER_CLAIMING_FUNDS_SPREADERS_PARAMETERS: IFundsSpreaderParamete
             },
             {
                 accountIndex: 1,
-                addressIndicesWithFunds: [0, 1],
+                addressIndicesWithFunds: [21],
             },
             {
                 accountIndex: 3,
-                addressIndicesWithFunds: [0, 1],
+                addressIndicesWithFunds: [90],
             },
         ],
     },
@@ -74,12 +74,16 @@ export const SHIMMER_CLAIMING_FUNDS_SPREADERS_PARAMETERS: IFundsSpreaderParamete
                 addressIndicesWithFunds: [1, 2],
             },
             {
-                accountIndex: 1,
+                accountIndex: 3,
                 addressIndicesWithFunds: [5, 10],
             },
             {
-                accountIndex: 3,
-                addressIndicesWithFunds: [10],
+                accountIndex: 11,
+                addressIndicesWithFunds: [0],
+            },
+            {
+                accountIndex: 12,
+                addressIndicesWithFunds: [21],
             },
         ],
     },
@@ -173,7 +177,7 @@ export const SHIMMER_CLAIMING_FUNDS_SPREADERS_PARAMETERS: IFundsSpreaderParamete
     ...fundsSpreaderParameters,
     addressDerivationCoinType: CoinType.IOTA,
     addressEncodingCoinType: CoinType.Shimmer,
-    networkType: NetworkType.Alphanet,
+    networkType: NetworkType.Testnet,
     requestFundsFromFaucet: true,
     backupToStrongholdFile: true,
 }))

@@ -1,0 +1,12 @@
+{
+    "name": "address-parser",
+    "version": "1.0.0",
+    "description": "A tool to parse IOTA- and Shimmer-based, Bech32-encoded addresses",
+    "author": "Matthew Maxwell <maxwellmattryan@gmail.com>",
+    "repository": "git@github.com:maxwellmattryan/stardust-tools.git",
+    "license": "MIT",
+    "scripts": {
+        "run:address-parser": "ts-node src/main.ts",
+        "test": "jest"
+    }
+}

@@ -4,6 +4,7 @@
 
 # Output by various Stardust tools
 **/build/
+!**/src/build/
 **/temp/
 **/out/
 
@@ -107,8 +108,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
-.env.test
+**/.env.*
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache

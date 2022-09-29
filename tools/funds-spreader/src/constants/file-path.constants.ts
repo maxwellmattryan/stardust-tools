@@ -11,4 +11,4 @@ export const BACKUP_FILE_PATH = `${__dirname}/../../temp/backups`
 /**
  * The path of the environment variable files.
  */
-export const ENV_FILE_PATH = `${__dirname}/../../.env`
+export const ENV_FILE_PATH = `${__dirname}/../../.env.01`

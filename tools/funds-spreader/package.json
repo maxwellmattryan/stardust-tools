@@ -6,7 +6,7 @@
     "repository": "git@github.com:maxwellmattryan/stardust-tools.git",
     "license": "MIT",
     "scripts": {
-        "execute": "ts-node src/main.ts"
+        "run:funds-spreader": "ts-node src/main.ts"
     },
     "dependencies": {
         "axios": "^0.27.2",

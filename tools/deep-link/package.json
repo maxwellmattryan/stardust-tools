@@ -1,0 +1,12 @@
+{
+  "name": "deep-link",
+  "version": "1.0.0",
+  "description": "A tool to build and parse IOTA deep links",
+  "author": "Matthew Maxwell <maxwellmattryan@gmail.com>",
+  "repository": "git@github.com:maxwellmattryan/stardust-tools.git",
+  "license": "MIT",
+  "scripts": {
+    "run:builder": "ts-node src/build/run.ts",
+    "run:parser": "ts-node src/parser/run.ts"
+  }
+}

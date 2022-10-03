@@ -1,0 +1,32 @@
+name: Publish Address Parser
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies
+        run: yarn
+        working-directory: tools/address-parser
+
+      - name: Build
+        run: yarn build
+        working-directory: tools/address-parser
+
+      - name: Publish
+        run: npm publish
+        working-directory: tools/address-parser
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

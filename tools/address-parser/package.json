@@ -5,6 +5,20 @@
     "author": "Matthew Maxwell <maxwellmattryan@gmail.com>",
     "repository": "git@github.com:maxwellmattryan/stardust-tools.git",
     "license": "MIT",
+    "keywords": [
+        "iota",
+        "shimmer",
+        "address",
+        "parser",
+        "bech32"
+    ],
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist",
+        "package.json"
+    ],
     "scripts": {
         "build": "yarn clean && rollup -c",
         "clean": "rimraf dist",

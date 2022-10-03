@@ -19,7 +19,7 @@ jobs:
           node-version: 14.x
 
       - name: Install Dependencies
-        run: yarn --ignore-scripts
+        run: yarn
 
       - name: Address Parser
         run: yarn test:address-parser

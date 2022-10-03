@@ -1,5 +1,5 @@
 {
-    "name": "@maxwellmattryan/address-parser",
+    "name": "iota-address-parser",
     "version": "1.0.0",
     "description": "A tool to parse IOTA- and Shimmer-based, Bech32-encoded addresses",
     "author": "Matthew Maxwell <maxwellmattryan@gmail.com>",

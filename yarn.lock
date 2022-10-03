@@ -338,25 +338,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@iota/types@^1.0.0-beta.11":
-  version "1.0.0-beta.12"
-  resolved "https://registry.yarnpkg.com/@iota/types/-/types-1.0.0-beta.12.tgz#b9be412bb30e78ae264f0b78dcc077bd6935fdd9"
-  integrity sha512-GNIvPBauq8jAuOG7Xyb0W08KV9J0jeZ08igcl6sj3vSSiDb5360tON1NShdCCLfql4vr7n6U5f9Gmv0uSRuTYA==
-
 "@iota/types@^1.0.0-beta.15":
   version "1.0.0-beta.15"
   resolved "https://registry.yarnpkg.com/@iota/types/-/types-1.0.0-beta.15.tgz#1a1f5722ef176a45d03e92f4cb5bd9a4ea74ec27"
   integrity sha512-67DrzDO5bl2c7RIMpOdtjdOa27Bv1EmX/BHPTQD8c3RtPPAzJpSIpuI8JsIDl3U6Qe4zdLX3kRv9zGBXcr0fZA==
-
-"@iota/wallet@^2.0.2-alpha.21":
-  version "2.0.2-alpha.21"
-  resolved "https://registry.yarnpkg.com/@iota/wallet/-/wallet-2.0.2-alpha.21.tgz#47c4de330e57e4f998a6fecd1117cd822ef3eb33"
-  integrity sha512-/LFhdLS849Ci+ZQ22rFHjS4NABuvbN5pb6PxapcEc3xGiyWdHCT5+F8aFzzy8HBy0Xj9kqvqa4CqB5J+8R0qTA==
-  dependencies:
-    "@iota/types" "^1.0.0-beta.11"
-    cargo-cp-artifact "^0.1.5"
-    prebuild-install "^7.1.1"
-    typescript "^4.7.4"
 
 "@iota/wallet@^2.0.2-alpha.32":
   version "2.0.2-alpha.32"

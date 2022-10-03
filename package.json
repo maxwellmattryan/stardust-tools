@@ -22,9 +22,6 @@
         "tool:address-parser": "cd tools/address-parser && yarn run:address-parser",
         "tool:funds-spreader": "cd tools/funds-spreader && yarn run:funds-spreader"
     },
-    "dependencies": {
-        "@iota/wallet": "^2.0.2-alpha.21"
-    },
     "devDependencies": {
         "@types/jest": "^29.1.0",
         "@types/node": "^18.7.6",

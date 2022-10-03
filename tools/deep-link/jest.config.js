@@ -11,23 +11,15 @@ const config = {
         '^.+\\.ts$': ['ts-jest'],
     },
     verbose: false,
-    collectCoverageFrom: [
-        "src/**/*.ts",
-    ],
-    coveragePathIgnorePatterns: [
-        "<rootDir>/node_modules",
-    ],
-    coverageReporters: [
-        "json",
-        "lcov",
-        "text",
-    ],
+    collectCoverageFrom: ['src/**/*.ts'],
+    coveragePathIgnorePatterns: ['<rootDir>/node_modules'],
+    coverageReporters: ['json', 'lcov', 'text'],
     coverageThreshold: {
         global: {
-            "branches": 100,
-            "functions": 100,
-            "lines": 100,
-            "statements": 100,
+            branches: 100,
+            functions: 100,
+            lines: 100,
+            statements: 100,
         },
     },
 }

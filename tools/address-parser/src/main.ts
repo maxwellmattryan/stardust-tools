@@ -21,7 +21,6 @@ function runAddressParser(): void {
 
     const endTime = performance.now()
     logTimeInformation(startTime, endTime, times)
-
 }
 function logTimeInformation(startTime: number, endTime: number, times: number[]): void {
     console.log(`Num addresses: ${NUM_ADDRESSES}`)

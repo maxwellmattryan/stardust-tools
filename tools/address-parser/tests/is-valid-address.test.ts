@@ -25,22 +25,12 @@ describe('Function: isValidAddress', () => {
 
         // Invalid separator
         expect(parser.isValidAddress('iotaqrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6xqgyzys')).toBe(false)
-        expect(parser.isValidAddress('iota11qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6x8x4r7t')).toBe(
-            false
-        )
-        expect(parser.isValidAddress('iota2qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6xqgyzys')).toBe(
-            false
-        )
+        expect(parser.isValidAddress('iota11qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6x8x4r7t')).toBe(false)
+        expect(parser.isValidAddress('iota2qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6xqgyzys')).toBe(false)
 
         // Invalid checksums
-        expect(parser.isValidAddress('iotaa1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6x8x4r7t')).toBe(
-            false
-        )
-        expect(parser.isValidAddress('iota1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6xqgyzys')).toBe(
-            false
-        )
-        expect(parser.isValidAddress('iota1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6x8x4r7t')).toBe(
-            false
-        )
+        expect(parser.isValidAddress('iotaa1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6x8x4r7t')).toBe(false)
+        expect(parser.isValidAddress('iota1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6xqgyzys')).toBe(false)
+        expect(parser.isValidAddress('iota1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6x8x4r7t')).toBe(false)
     })
 })

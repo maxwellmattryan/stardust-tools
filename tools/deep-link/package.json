@@ -1,0 +1,20 @@
+{
+    "name": "deep-link",
+    "version": "1.0.0",
+    "description": "A tool to parse IOTA- and Shimmer-based deep links",
+    "author": "Matthew Maxwell <maxwellmattryan@gmail.com>",
+    "repository": "git@github.com:maxwellmattryan/stardust-tools.git",
+    "license": "MIT",
+    "scripts": {
+        "build": "yarn clean && rollup -c",
+        "clean": "rimraf dist",
+        "start": "yarn clean && rollup -c -w",
+        "run:address-parser": "ts-node src/main.ts",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "@rollup/plugin-typescript": "^8.5.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.79.1"
+    }
+}

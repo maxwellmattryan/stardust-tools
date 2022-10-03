@@ -8,6 +8,7 @@
     "private": true,
     "workspaces": [
         "tools/address-parser",
+        "tools/deep-link",
         "tools/funds-spreader"
     ],
     "scripts": {

@@ -1,4 +1,4 @@
-name: Publish Address Parser
+name: publish-address-parser
 
 on:
   push:
@@ -18,8 +18,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
-        run: yarn
-        working-directory: tools/address-parser
+        run: yarn --ignore-scripts
 
       - name: Build
         run: yarn build

@@ -32,5 +32,9 @@ describe('Function: isValidAddress', () => {
         expect(parser.isValidAddress('iotaa1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6x8x4r7t')).toBe(false)
         expect(parser.isValidAddress('iota1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6xqgyzys')).toBe(false)
         expect(parser.isValidAddress('iota1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6x8x4r7t')).toBe(false)
+
+        // Invalid address type
+        expect(parser.isValidAddress('iota1brhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6xqgyzyx')).toBe(false)
+        expect(parser.isValidAddress('smr1drhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6xhcazjh')).toBe(false)
     })
 })

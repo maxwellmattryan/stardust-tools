@@ -52,6 +52,8 @@ export function validateAddress(
         type = AddressType.Alias
     } else if (typeIndicator === 'z') {
         type = AddressType.Nft
+    } else {
+        return 'Invalid address type'
     }
 
     // 6. Validate checksum

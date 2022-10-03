@@ -11,13 +11,14 @@
             "extends": [
                 "plugin:@typescript-eslint/eslint-recommended",
                 "plugin:@typescript-eslint/recommended",
-                "plugin:@typescript-eslint/recommended-requiring-type-checking"
+                "plugin:@typescript-eslint/recommended-requiring-type-checking",
             ],
             "parser": "@typescript-eslint/parser",
             "parserOptions": {
                 "ecmaVersion": 6,
                 "sourceType": "module",
-                "project": "./tsconfig.lint.json"
+                "project": "tsconfig.lint.json",
+                "tsconfigRootDir": "./"
             },
             "plugins": ["@typescript-eslint"],
             "rules": {
@@ -26,8 +27,9 @@
         }
     ],
     "env": {
+        "jest": true,
         "browser": false,
         "es6": true,
-        "node": true,
+        "node": true
     }
 }

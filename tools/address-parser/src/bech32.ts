@@ -3,7 +3,11 @@ import { AddressType } from './enums'
 import { IParseAddressResult } from './interfaces'
 import { Address } from './types'
 
-export function validateAddress(address: Address, encodingConstant: number, limit: number): IParseAddressResult | string {
+export function validateAddress(
+    address: Address,
+    encodingConstant: number,
+    limit: number
+): IParseAddressResult | string {
     // 1. Check address length
     if (!address) {
         return 'Invalid address argument'

@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
 import { AddressParser } from '../src/address-parser'
 
 describe('File: address-parser.ts', () => {
@@ -23,13 +26,23 @@ describe('File: address-parser.ts', () => {
 
             // Invalid separator
             expect(parser.isValidAddress('iotaqrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6xqgyzys')).toBe(false)
-            expect(parser.isValidAddress('iota11qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6x8x4r7t')).toBe(false)
-            expect(parser.isValidAddress('iota2qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6xqgyzys')).toBe(false)
+            expect(parser.isValidAddress('iota11qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6x8x4r7t')).toBe(
+                false
+            )
+            expect(parser.isValidAddress('iota2qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6xqgyzys')).toBe(
+                false
+            )
 
             // Invalid checksums
-            expect(parser.isValidAddress('iotaa1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6x8x4r7t')).toBe(false)
-            expect(parser.isValidAddress('iota1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6xqgyzys')).toBe(false)
-            expect(parser.isValidAddress('iota1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6x8x4r7t')).toBe(false)
+            expect(parser.isValidAddress('iotaa1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6x8x4r7t')).toBe(
+                false
+            )
+            expect(parser.isValidAddress('iota1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6xqgyzys')).toBe(
+                false
+            )
+            expect(parser.isValidAddress('iota1qrhacyfwlcnzkvzteumekfkrrwks98mpdm37cj4xx3drvmjvnep6x8x4r7t')).toBe(
+                false
+            )
         })
     })
 })

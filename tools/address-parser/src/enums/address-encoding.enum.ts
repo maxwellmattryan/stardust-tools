@@ -1,4 +1,4 @@
 export enum AddressEncoding {
-    Bech32 = 'bech32',
-    Bech32M = 'bech32m',
+    Bech32 = 1,
+    Bech32M = 0x2bc830a3,
 }

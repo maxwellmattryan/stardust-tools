@@ -14,25 +14,25 @@ export function validateAddress(address: Address, encodingConstant: number, limi
     }
 
     // 2. Check character casing
-    const lowered = address.toLowerCase()
-    const uppered = address.toUpperCase()
-    if (address !== lowered && address !== uppered) {
+    const lowerCaseAddress = address.toLowerCase()
+    const upperCaseAddress = address.toUpperCase()
+    if (address !== lowerCaseAddress && address !== upperCaseAddress) {
         return `"${address}" contains mixed-case characters`
     } else {
-        address = lowered
+        address = lowerCaseAddress
     }
 
     // 3. Check prefix and separator
-    const split = address.lastIndexOf('1')
-    if (split === -1) {
+    const separatorIndex = address.lastIndexOf('1')
+    if (separatorIndex === -1) {
         return 'No separator character for ' + address
-    } else if (split === 0) {
+    } else if (separatorIndex === 0) {
         return 'Missing prefix for ' + address
     }
 
     // 4. Get HRP and check length of data
-    const hrp = address.slice(0, split)
-    const dataChars = address.slice(split + 1)
+    const hrp = address.slice(0, separatorIndex)
+    const dataChars = address.slice(separatorIndex + 1)
     const dataCharsLength = dataChars.length
     const checksum = dataChars.slice(dataCharsLength - CHECKSUM_LENGTH)
     if (dataChars.length < CHECKSUM_LENGTH) {
@@ -88,20 +88,20 @@ export function validateAddress(address: Address, encodingConstant: number, limi
 }
 
 function checkHrp(hrp: string): number | string {
-    let chk = 1
+    let check = 1
     for (let i = 0; i < hrp.length; ++i) {
         const c = hrp.charCodeAt(i)
         if (c < 33 || c > 126) return 'Invalid prefix (' + hrp + ')'
 
-        chk = polymodStep(chk) ^ (c >> 5)
+        check = polymodStep(check) ^ (c >> 5)
     }
-    chk = polymodStep(chk)
+    check = polymodStep(check)
 
     for (let i = 0; i < hrp.length; ++i) {
         const v = hrp.charCodeAt(i)
-        chk = polymodStep(chk) ^ (v & 0x1f)
+        check = polymodStep(check) ^ (v & 0x1f)
     }
-    return chk
+    return check
 }
 
 function polymodStep(pre: number): number {

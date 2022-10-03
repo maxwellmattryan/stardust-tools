@@ -34,12 +34,7 @@ export class AddressParser implements IAddressParser {
     }
 
     public parseAddress(address: Address): IParseAddressResult {
-        const encodingNumber = this._getEncodingConstant()
-        if (!encodingNumber) {
-            throw new Error('Parser initialized with invalid encoding type')
-        }
-
-        const result = validateAddress(address, encodingNumber, this._limit)
+        const result = validateAddress(address, this._encoding, this._limit)
         const isValidAddress = typeof result === 'object'
         if (isValidAddress) {
             return result
@@ -49,23 +44,7 @@ export class AddressParser implements IAddressParser {
     }
 
     public isValidAddress(address: Address): boolean {
-        const encodingNumber = this._getEncodingConstant()
-        if (!encodingNumber) {
-            throw new Error('Parser initialized with invalid encoding type')
-        }
-
-        const result = validateAddress(address, encodingNumber, this._limit)
+        const result = validateAddress(address, this._encoding, this._limit)
         return typeof result === 'object'
-    }
-
-    private _getEncodingConstant(): number | undefined {
-        switch (this._encoding) {
-            case AddressEncoding.Bech32:
-                return 1
-            case AddressEncoding.Bech32M:
-                return 0x2bc830a3
-            default:
-                return undefined
-        }
     }
 }

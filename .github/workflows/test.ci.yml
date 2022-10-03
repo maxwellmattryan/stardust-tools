@@ -1,4 +1,4 @@
-name: lint-and-format
+name: test
 
 on:
   pull_request:

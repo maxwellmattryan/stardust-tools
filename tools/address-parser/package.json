@@ -6,7 +6,15 @@
     "repository": "git@github.com:maxwellmattryan/stardust-tools.git",
     "license": "MIT",
     "scripts": {
+        "build": "yarn clean && rollup -c",
+        "clean": "rimraf dist",
+        "start": "yarn clean && rollup -c -w",
         "run:address-parser": "ts-node src/main.ts",
         "test": "jest"
+    },
+    "devDependencies": {
+        "@rollup/plugin-typescript": "^8.5.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.79.1"
     }
 }

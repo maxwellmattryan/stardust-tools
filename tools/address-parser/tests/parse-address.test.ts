@@ -33,7 +33,6 @@ describe('Function: parseAddress', () => {
 
     it('should handle Alias addresses', () => {
         let result = parser.parseAddress('iota1prlgpsht03ekmghhex8v7y67a835uns8dtlxu807hj0v279c74kj76j6rev')
-        console.log('RESULT: ', result)
         expect(result).toEqual({
             hrp: 'iota',
             data: [
@@ -45,7 +44,6 @@ describe('Function: parseAddress', () => {
         })
 
         result = parser.parseAddress('rms1prlgpsht03ekmghhex8v7y67a835uns8dtlxu807hj0v279c74kj7e9ge5y')
-        console.log('RESULT: ', result)
         expect(result).toEqual({
             hrp: 'rms',
             data: [
@@ -59,7 +57,6 @@ describe('Function: parseAddress', () => {
 
     it('should handle NFT addresses', () => {
         let result = parser.parseAddress('atoi1zqc4nvg4ufcj3dkmzmd4uc034fx8pkz2nxl820a28mnsmxkec6ntwgz87pn')
-        console.log('RESULT: ', result)
         expect(result).toEqual({
             hrp: 'atoi',
             data: [
@@ -71,7 +68,6 @@ describe('Function: parseAddress', () => {
         })
 
         result = parser.parseAddress('smr1zqc4nvg4ufcj3dkmzmd4uc034fx8pkz2nxl820a28mnsmxkec6ntwcu0ld0')
-        console.log('RESULT: ', result)
         expect(result).toEqual({
             hrp: 'smr',
             data: [

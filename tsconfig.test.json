@@ -2,7 +2,7 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
         "esModuleInterop": true,
-        "moduleResolution": "classic",
+        "moduleResolution": "node",
         "types": ["jest", "node"]
     },
     "include": ["**/src", "**/tests"],

@@ -7,6 +7,7 @@
     "license": "MIT",
     "private": true,
     "workspaces": [
+        "tools/address-parser",
         "tools/funds-spreader"
     ],
     "scripts": {
@@ -19,8 +20,6 @@
         "lint:fix": "eslint --cache --fix **/*.{ts,js}",
         "test:address-parser": "cd tools/address-parser && yarn test",
         "tool:address-parser": "cd tools/address-parser && yarn run:address-parser",
-        "tool:deep-link:builder": "cd tools/deep-link && yarn run:builder",
-        "tool:deep-link:parser": "cd tools/deep-link && yarn run:parser",
         "tool:funds-spreader": "cd tools/funds-spreader && yarn run:funds-spreader"
     },
     "dependencies": {

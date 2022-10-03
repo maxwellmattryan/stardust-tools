@@ -1,190 +1,117 @@
-const CHARSET = 'qpzry9x8gf2tvdw0s3jn54khce6mua7l'
-const GENERATOR = [0x3b6a57b2, 0x26508e6d, 0x1ea119fa, 0x3d4233dd, 0x2a1462b3]
+import { ALPHABET_MAP, CHECKSUM_LENGTH } from './constants'
+import { AddressType } from './enums'
+import { IParseAddressResult } from './interfaces'
+import { Address } from './types'
 
-export enum Bech32Encoding {
-    BECH_32 = 'bech32',
-    BECH_32_M = 'bech32m',
-}
-
-export interface IBech32Decoding {
-    hrp: Bech32Hrp,
-    data: Bech32Data
-}
-
-export enum Bech32Hrp {
-    IOTA = 'iota',
-    ATOI = 'atoi',
-    SMR = 'smr',
-    RMS = 'rms',
-}
-
-export type Bech32Data = number[]
-
-export type Bech32Checksum = number[]
-
-export enum Bech32AddressType {
-    Ed25519 = 'ed25519',
-    Alias = 'alias',
-    Nft = 'nft',
-}
-
-export interface IParseResult {
-    hrp: Bech32Hrp
-    data: Bech32Data
-    addressType: Bech32AddressType
-}
-
-///
-/// EXTERNAL API
-///
-
-export function parseBech32Address(address: string): IParseResult | undefined {
-    // Validate the following:
-    //      has valid HRP
-    //      has valid checksum
-    //      has valid address type
-
-    if (!address || typeof address !== 'string') {
-        return undefined
+export function validateAddress(address: Address, encodingConstant: number, limit: number): IParseAddressResult | string {
+    // 1. Check address length
+    if (!address) {
+        return 'Invalid address argument'
+    } else if (address.length < 8) {
+        return `"${address}" is too short`
+    } else if (address.length > limit) {
+        return 'Exceeds length limit'
     }
 
-    console.log('ADDRESS: ', address)
-
-    const decodedAddress = decode(address)
-    if (!decodedAddress) {
-        return undefined
+    // 2. Check character casing
+    const lowered = address.toLowerCase()
+    const uppered = address.toUpperCase()
+    if (address !== lowered && address !== uppered) {
+        return `"${address}" contains mixed-case characters`
+    } else {
+        address = lowered
     }
 
-    const { hrp, data } = decodedAddress
-    if (!hrp || !data) {
-        return undefined
+    // 3. Check prefix and separator
+    const split = address.lastIndexOf('1')
+    if (split === -1) {
+        return 'No separator character for ' + address
+    } else if (split === 0) {
+        return 'Missing prefix for ' + address
     }
 
-    console.log('HRP: ', hrp)
-    console.log('DATA: ', data)
-    console.log('VALID: ', verifyChecksum(hrp, data))
-    console.log('\n')
-
-    return {
-        hrp,
-        data,
-        addressType: Bech32AddressType.Ed25519,
+    // 4. Get HRP and check length of data
+    const hrp = address.slice(0, split)
+    const dataChars = address.slice(split + 1)
+    const dataCharsLength = dataChars.length
+    const checksum = dataChars.slice(dataCharsLength - CHECKSUM_LENGTH)
+    if (dataChars.length < CHECKSUM_LENGTH) {
+        return 'Data too short'
     }
-}
 
-///
-/// INTERNAL API
-///
+    // 5. Derive the address type
+    let type: AddressType
+    const typeIndicator = dataChars[0]
+    if (typeIndicator === 'q') {
+        type = AddressType.Ed25519
+    } else if (typeIndicator === 'p') {
+        type = AddressType.Alias
+    } else if (typeIndicator === 'z') {
+        type = AddressType.Nft
+    }
 
-export function decode(address: string, encoding = Bech32Encoding.BECH_32): IBech32Decoding {
-    let p: number
-    let has_lower = false
-    let has_upper = false
-    for (p = 0; p < address.length; ++p) {
-        if (address.charCodeAt(p) < 33 || address.charCodeAt(p) > 126) {
-            return null
+    // 6. Validate checksum
+    let hrpCheck = checkHrp(hrp)
+    if (typeof hrpCheck === 'string') {
+        return hrpCheck
+    }
+
+    const data = []
+    for (let i = 0; i < dataChars.length; i++) {
+        const c = dataChars.charAt(i)
+        const v = ALPHABET_MAP[c]
+        if (v === undefined) {
+            return 'Unknown character ' + c
         }
-        if (address.charCodeAt(p) >= 97 && address.charCodeAt(p) <= 122) {
-            has_lower = true
-        }
-        if (address.charCodeAt(p) >= 65 && address.charCodeAt(p) <= 90) {
-            has_upper = true
+
+        hrpCheck = polymodStep(hrpCheck) ^ v
+
+        // not in the checksum?
+        const isChecksumChar = i + 6 >= dataChars.length
+        if (isChecksumChar) {
+            continue
+        } else {
+            data.push(v)
         }
     }
-    if (has_lower && has_upper) {
-        return null
-    }
-    address = address.toLowerCase()
 
-    const pos = address.lastIndexOf('1')
-    if (pos < 1 || pos + 7 > address.length || address.length > 90) {
-        return null
-    }
-
-    const hrp = <Bech32Hrp>address.substring(0, pos)
-    if (!Object.values(Bech32Hrp).includes(hrp)) {
-        return null
-    }
-
-    const data: Bech32Data = []
-    for (p = pos + 1; p < address.length; ++p) {
-        const d = CHARSET.indexOf(address.charAt(p))
-        if (d === -1) {
-            return null
+    if (hrpCheck !== encodingConstant) {
+        return 'Invalid checksum for ' + address
+    } else {
+        return {
+            hrp,
+            data,
+            checksum,
+            ...(type && { type }),
         }
-        data.push(d)
-    }
-
-    return {
-        hrp,
-        data,
     }
 }
 
-export function verifyChecksum(hrp: Bech32Hrp, data: Bech32Data, encoding = Bech32Encoding.BECH_32) {
-    return polymod(hrpExpand(hrp).concat(data)) === getEncodingConst(encoding)
-}
-
-function polymod(values: Bech32Data): number {
+function checkHrp(hrp: string): number | string {
     let chk = 1
+    for (let i = 0; i < hrp.length; ++i) {
+        const c = hrp.charCodeAt(i)
+        if (c < 33 || c > 126) return 'Invalid prefix (' + hrp + ')'
 
-    for (let p = 0; p < values.length; ++p) {
-        const top = chk >> 25
-        chk = (chk & 0x1ffffff) << 5 ^ values[p]
-        for (let i = 0; i < 5; ++i) {
-            if ((top >> i) & 1) {
-                chk ^= GENERATOR[i]
-            }
-        }
+        chk = polymodStep(chk) ^ (c >> 5)
+    }
+    chk = polymodStep(chk)
+
+    for (let i = 0; i < hrp.length; ++i) {
+        const v = hrp.charCodeAt(i)
+        chk = polymodStep(chk) ^ (v & 0x1f)
     }
     return chk
 }
 
-function hrpExpand(hrp: Bech32Hrp): Bech32Data {
-    const ret: Bech32Data = []
-
-    let p: number
-    for (p = 0; p < hrp.length; ++p) {
-        ret.push(hrp.charCodeAt(p) >> 5)
-    }
-    ret.push(0)
-    for (p = 0; p < hrp.length; ++p) {
-        ret.push(hrp.charCodeAt(p) & 31)
-    }
-
-    return ret
-}
-
-function getEncodingConst(encoding: Bech32Encoding): number {
-    switch (encoding) {
-        case Bech32Encoding.BECH_32:
-            return 1
-        case Bech32Encoding.BECH_32_M:
-            return 0x2bc830a3
-        default:
-            return null
-    }
-}
-
-export function encode(hrp: Bech32Hrp, data: Bech32Data, encoding: Bech32Encoding): string {
-    const combined = data.concat(createChecksum(hrp, data, encoding))
-
-    let ret = hrp + '1'
-    for (let p = 0; p < combined.length; ++p) {
-        ret += CHARSET.charAt(combined[p])
-    }
-
-    return ret
-}
-
-function createChecksum(hrp: Bech32Hrp, data: Bech32Data, encoding: Bech32Encoding): Bech32Checksum {
-    const values = hrpExpand(hrp).concat(data).concat([0, 0, 0, 0, 0, 0])
-    const mod = polymod(values) ^ getEncodingConst(encoding)
-
-    const ret: Bech32Checksum = []
-    for (let p = 0; p < 6; ++p) {
-        ret.push((mod >> 5 * (5 - p)) & 31)
-    }
-
-    return ret
+function polymodStep(pre: number): number {
+    const b = pre >> 25
+    return (
+        ((pre & 0x1ffffff) << 5) ^
+        (-((b >> 0) & 1) & 0x3b6a57b2) ^
+        (-((b >> 1) & 1) & 0x26508e6d) ^
+        (-((b >> 2) & 1) & 0x1ea119fa) ^
+        (-((b >> 3) & 1) & 0x3d4233dd) ^
+        (-((b >> 4) & 1) & 0x2a1462b3)
+    )
 }

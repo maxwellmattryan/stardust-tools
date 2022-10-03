@@ -19,7 +19,7 @@ jobs:
           node-version: 14.x
 
       - name: Install Dependencies
-        run: yarn
+        run: yarn --ignore-scripts
 
       - name: Formatting
         run: yarn format:check
@@ -35,7 +35,7 @@ jobs:
           node-version: 14.x
 
       - name: Install Dependencies
-        run: yarn
+        run: yarn --ignore-scripts
 
       - name: Linting
         run: yarn lint:check

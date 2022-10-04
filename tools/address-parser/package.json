@@ -1,6 +1,6 @@
 {
     "name": "iota-address-parser",
-    "version": "1.0.1",
+    "version": "0.1.0",
     "description": "A tool to parse IOTA- and Shimmer-based, Bech32-encoded addresses",
     "author": "Matthew Maxwell <maxwellmattryan@gmail.com>",
     "repository": "git@github.com:maxwellmattryan/stardust-tools.git",

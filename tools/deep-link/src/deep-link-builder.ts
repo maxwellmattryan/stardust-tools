@@ -1,36 +1,48 @@
+import { DEFAULT_DEEP_LINK_BUILDER_OPTIONS } from './constants'
 import { NetworkProtocol } from './enums'
-import { IClaimDeepLinkParameters,
+import {
     IDeepLinkBuilder,
     IDeepLinkBuilderOptions,
     ISendDeepLinkParameters
 } from './interfaces'
-import { DeepLink } from './types'
+import { DeepLink, OutputId } from './types'
 
 export class DeepLinkBuilder implements IDeepLinkBuilder {
-    private _protocol: NetworkProtocol
+    private readonly _networkProtocol: NetworkProtocol
 
     constructor(options?: IDeepLinkBuilderOptions) {
-        console.log('OPTIONS: ', options)
+        const { networkProtocol } = options ?? DEFAULT_DEEP_LINK_BUILDER_OPTIONS
 
-        this._protocol = options?.networkProtocol ?? NetworkProtocol.Shimmer
+        this._networkProtocol = this._validateNetworkProtocol(networkProtocol)
     }
 
-    buildSendTransactionDeepLink(parameters?: ISendDeepLinkParameters): DeepLink {
-        console.log('PARAMETERS: ', parameters)
-        console.log('PARSED: ', qs.parse(parameters))
+    private _validateNetworkProtocol(networkProtocol: NetworkProtocol): NetworkProtocol {
+        if (!networkProtocol || !Object.values(NetworkProtocol).includes(networkProtocol)) {
+            throw new Error('Invalid network protocol (must be "iota" or "shimmer")')
+        }
 
-        return ''
+        return networkProtocol
     }
-    buildSendMicroTransactionDeepLink(parameters?: ISendDeepLinkParameters): DeepLink {
+
+    public buildSendTransactionDeepLink(parameters?: ISendDeepLinkParameters): DeepLink {
         throw new Error('Method not implemented.')
     }
-    buildSendExpiryTransactionDeepLink(parameters?: ISendDeepLinkParameters): DeepLink {
-        throw new Error('Method not implemented.')
+
+    public buildSendNormalTransactionDeepLink(recipient: string, amount: number): DeepLink {
+        return `${this._networkProtocol}:wallet/send?recipient=${recipient}&amount=${amount}`
     }
-    buildSendTimelockTransactionDeepLink(parameters?: ISendDeepLinkParameters): DeepLink {
-        throw new Error('Method not implemented.')
+    public buildSendMicroTransactionDeepLink(recipient: string, amount: number, storageDepositAmount: number, storageDepositReturnAddress: string): DeepLink {
+        return `${this._networkProtocol}:wallet/send?recipient=${recipient}&amount=${amount}&storageDepositAmount=${storageDepositAmount}&storageDepositReturnAddress=${storageDepositReturnAddress}`
     }
-    buildClaimOutputsDeepLink(parameters?: IClaimDeepLinkParameters): DeepLink {
-        throw new Error('Method not implemented.')
+    public buildSendExpiryTransactionDeepLink(recipient: string, amount: number, expirationDate: number, expirationReturnAddress: string): DeepLink {
+        return `${this._networkProtocol}:wallet/send?recipient=${recipient}&amount=${amount}&expirationDate=${expirationDate}&expirationReturnAddress=${expirationReturnAddress}`
+    }
+    public buildSendTimelockTransactionDeepLink(recipient: string, amount: number, timelock: number): DeepLink {
+        return `${this._networkProtocol}:wallet/send?recipient=${recipient}&amount=${amount}&timelock=${timelock}`
+    }
+
+    public buildClaimOutputsDeepLink(outputIds: OutputId[]): DeepLink {
+        const outputIdsString = outputIds?.length === 1 ? outputIds[0] : outputIds.join(',')
+        return `${this._networkProtocol}:wallet/claim?outputIds=${outputIdsString}`
     }
 }

@@ -9,15 +9,12 @@
         "build": "yarn clean && rollup -c",
         "clean": "rimraf dist",
         "start": "yarn clean && rollup -c -w",
-        "run:deep-link": "ts-node src/main.ts",
+        "sandbox": "ts-node src/sandbox.ts",
         "test": "jest"
-    },
-    "dependencies": {
-        "iota-address-parser": "^1.0.0",
-        "qs": "^6.11.0"
     },
     "devDependencies": {
         "@rollup/plugin-typescript": "^8.5.0",
+        "@types/qs": "^6.9.7",
         "rimraf": "^3.0.2",
         "rollup": "^2.79.1"
     }

@@ -1,14 +1,18 @@
-import { DeepLink } from '../types'
+import { Address, DeepLink, OutputId, Recipient } from '../types'
 
 import { IClaimDeepLinkParameters, ISendDeepLinkParameters } from './parameters'
 
 export interface IDeepLinkBuilder {
     // Wallet
     buildSendTransactionDeepLink(parameters?: ISendDeepLinkParameters): DeepLink
-    buildSendMicroTransactionDeepLink(parameters?: ISendDeepLinkParameters): DeepLink
-    buildSendExpiryTransactionDeepLink(parameters?: ISendDeepLinkParameters): DeepLink
-    buildSendTimelockTransactionDeepLink(parameters?: ISendDeepLinkParameters): DeepLink
-    buildClaimOutputsDeepLink(parameters?: IClaimDeepLinkParameters): DeepLink
+
+    buildSendNormalTransactionDeepLink(recipient: Recipient, amount: number): DeepLink
+    buildSendMicroTransactionDeepLink(recipient: Recipient, amount: number, storageDepositAmount: number, storageDepositReturnAddress: Address): DeepLink
+    buildSendExpiryTransactionDeepLink(recipient: Recipient, amount: number, expirationDate: number, expirationReturnAddress: Address): DeepLink
+    buildSendTimelockTransactionDeepLink(recipient: Recipient, amount: number, timelock: number): DeepLink
+
+    // TODO: Should this argument be spread?
+    buildClaimOutputsDeepLink(outputIds: OutputId[]): DeepLink
 
     // // Foundry
     // buildMintNativeTokenDeepLink(): DeepLink

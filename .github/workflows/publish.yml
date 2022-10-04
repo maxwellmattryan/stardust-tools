@@ -1,4 +1,4 @@
-name: publish-address-parser
+name: publish
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - 'main'
 
 jobs:
-  build:
+  address-parser:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v3

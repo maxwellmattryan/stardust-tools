@@ -20,8 +20,10 @@
         "lint:check": "eslint --cache --debug **/*.{ts,js}",
         "lint:fix": "eslint --cache --fix **/*.{ts,js}",
         "test:address-parser": "cd tools/address-parser && yarn test",
-        "tool:address-parser": "cd tools/address-parser && yarn run:address-parser",
-        "tool:funds-spreader": "cd tools/funds-spreader && yarn run:funds-spreader"
+        "test:deep-link": "cd tools/deep-link && yarn test",
+        "tool:address-parser": "cd tools/address-parser && yarn sandbox",
+        "tool:deep-link": "cd tools/deep-link && yarn sandbox",
+        "tool:funds-spreader": "cd tools/funds-spreader && yarn sandbox"
     },
     "devDependencies": {
         "@types/jest": "^29.1.0",

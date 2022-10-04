@@ -8,7 +8,7 @@ on:
       - 'develop'
 
 jobs:
-  format:
+  address-parser:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v3
@@ -21,5 +21,21 @@ jobs:
       - name: Install Dependencies
         run: yarn --ignore-scripts
 
-      - name: Address Parser
+      - name: Test
         run: yarn test:address-parser
+
+  deep-link:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
+
+      - name: Install Dependencies
+        run: yarn --ignore-scripts
+
+      - name: Test
+        run: yarn test:deep-link

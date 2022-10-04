@@ -23,7 +23,7 @@
         "build": "yarn clean && rollup -c",
         "clean": "rimraf dist",
         "start": "yarn clean && rollup -c -w",
-        "run:address-parser": "ts-node src/main.ts",
+        "sandbox": "ts-node src/sandbox.ts",
         "test": "jest"
     },
     "devDependencies": {

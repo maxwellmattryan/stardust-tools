@@ -130,7 +130,7 @@ Use the following steps to make sure the funds spreader works properly when usin
 1. Create a new TypeScript file in `stardust-tools/tools/funds-spreader/src/constants/funds-spreaders-parameters`
 2. Properly declare and define a variable of type `IFundsSpreaderParameters[]` with the specific configuration
 3. Barrel export your newly created file by adding another line in [`stardust-tools/tools/funds-spreader/src/constants/funds-spreaders-parameters/index.ts`](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/constants/funds-spreaders-parameters/index.ts){target=\_blank}
-4. In `stardust-tools/tools/funds-spreader/src/builder.ts`, please change [this line](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/main.ts#L9){target=\_blank}
+4. In `stardust-tools/tools/funds-spreader/src/deep-link-builder.ts`, please change [this line](https://github.com/maxwellmattryan/stardust-tools/blob/develop/tools/funds-spreader/src/main.ts#L9){target=\_blank}
 
 [^1]:
 The `coin_type` parameter is **NOT** technically relevant to how the address is encoded (that is determined by the Bech32 HRP), only derived.

@@ -23,7 +23,8 @@
         "test:deep-link": "cd tools/deep-link && yarn test",
         "tool:address-parser": "cd tools/address-parser && yarn sandbox",
         "tool:deep-link": "cd tools/deep-link && yarn sandbox",
-        "tool:funds-spreader": "cd tools/funds-spreader && yarn sandbox"
+        "tool:funds-spreader": "cd tools/funds-spreader && yarn sandbox",
+        "prepare": "husky install"
     },
     "devDependencies": {
         "@types/jest": "^29.1.0",
@@ -31,7 +32,7 @@
         "@typescript-eslint/eslint-plugin": "^5.33.1",
         "@typescript-eslint/parser": "^5.33.1",
         "eslint": "^8.22.0",
-        "husky": "^8.0.1",
+        "husky": "^8.0.0",
         "jest": "^29.1.1",
         "jest-environment-jsdom": "^29.1.1",
         "lint-staged": "^13.0.3",

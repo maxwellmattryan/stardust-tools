@@ -1,11 +1,12 @@
 import { DEFAULT_DEEP_LINK_BUILDER_OPTIONS } from './constants'
 import { NetworkProtocol } from './enums'
 import {
+    IClaimDeepLinkParameters,
     IDeepLinkBuilder,
     IDeepLinkBuilderOptions,
-    ISendDeepLinkParameters
+    ISendDeepLinkParameters,
 } from './interfaces'
-import { DeepLink, OutputId } from './types'
+import { DeepLink } from './types'
 
 export class DeepLinkBuilder implements IDeepLinkBuilder {
     private readonly _networkProtocol: NetworkProtocol
@@ -31,17 +32,28 @@ export class DeepLinkBuilder implements IDeepLinkBuilder {
     public buildSendNormalTransactionDeepLink(recipient: string, amount: number): DeepLink {
         return `${this._networkProtocol}:wallet/send?recipient=${recipient}&amount=${amount}`
     }
-    public buildSendMicroTransactionDeepLink(recipient: string, amount: number, storageDepositAmount: number, storageDepositReturnAddress: string): DeepLink {
+    public buildSendMicroTransactionDeepLink(
+        recipient: string,
+        amount: number,
+        storageDepositAmount: number,
+        storageDepositReturnAddress: string
+    ): DeepLink {
         return `${this._networkProtocol}:wallet/send?recipient=${recipient}&amount=${amount}&storageDepositAmount=${storageDepositAmount}&storageDepositReturnAddress=${storageDepositReturnAddress}`
     }
-    public buildSendExpiryTransactionDeepLink(recipient: string, amount: number, expirationDate: number, expirationReturnAddress: string): DeepLink {
+    public buildSendExpiryTransactionDeepLink(
+        recipient: string,
+        amount: number,
+        expirationDate: number,
+        expirationReturnAddress: string
+    ): DeepLink {
         return `${this._networkProtocol}:wallet/send?recipient=${recipient}&amount=${amount}&expirationDate=${expirationDate}&expirationReturnAddress=${expirationReturnAddress}`
     }
     public buildSendTimelockTransactionDeepLink(recipient: string, amount: number, timelock: number): DeepLink {
         return `${this._networkProtocol}:wallet/send?recipient=${recipient}&amount=${amount}&timelock=${timelock}`
     }
 
-    public buildClaimOutputsDeepLink(outputIds: OutputId[]): DeepLink {
+    public buildClaimOutputsDeepLink(parameters?: IClaimDeepLinkParameters): DeepLink {
+        const { outputIds } = parameters ?? { outputIds: [] }
         const outputIdsString = outputIds?.length === 1 ? outputIds[0] : outputIds.join(',')
         return `${this._networkProtocol}:wallet/claim?outputIds=${outputIdsString}`
     }

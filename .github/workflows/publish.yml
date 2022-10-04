@@ -3,7 +3,8 @@ name: publish
 on:
   push:
     branches:
-      - 'main'
+      - 'production'
+      - 'develop'
 
 jobs:
   address-parser:

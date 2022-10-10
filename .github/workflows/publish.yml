@@ -2,9 +2,8 @@ name: publish
 
 on:
   push:
-    branches:
-      - 'production'
-      - 'develop'
+    tags:
+      - v*
 
 jobs:
   address-parser:
